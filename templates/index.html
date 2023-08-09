@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Daily Braille</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+
+      <img src="{{ url_for('static', filename='hero.png') }}" alt="" class="aa" height="900px">
+     
+      <div class="heading"><h1>Explore your daily dose of Braille</h1></div>
+      <div class="www"><img src="{{ url_for('static', filename='logo.png') }}" alt="" class="aaa"></div>
+      
+      <div class="form">
+        <div class="form-inner">
+
+          <form action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" class="button" accept=".pdf, .txt,.png" name="upload" id="upload">
+            <input type="submit" class="button" value="Translate" id="predict">
+          </form>
+
+        </div>
+
+        <div class="vattam">
+          <img src="{{ url_for('static', filename='Ellipse.png') }}">
+        </div>
+        
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
