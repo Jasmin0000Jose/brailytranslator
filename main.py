@@ -14,10 +14,11 @@ load_braille_model()
 
 # Preprocess the uploaded image
 def preprocess_image(image):
-    resized_image = tf.image.resize(image, [224, 224])
+    resized_image = tf.image.resize(image, [28, 28])  # Resize to (28, 28)
     normalized_image = resized_image / 255.0
     batched_image = np.expand_dims(normalized_image, axis=0)
     return batched_image
+
 
 @app.route('/')
 def index():
@@ -40,7 +41,7 @@ def predict():
     except Exception as e:
         return "Error: " + str(e)
 
-@app.route('/templates/translation.html')
+@app.route('/translations/<int:prediction>')
 def show_translation(prediction):
     return render_template('translations.html', prediction=prediction)
 
